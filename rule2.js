@@ -38,18 +38,22 @@ function whose_move(){
 }
 
 function mark_square(square) {
-	if (whose_move() == 1 ) {
-		document.getElementById(square).innerHTML = "X";
-		this.board_state[this.table_ids.indexOf(square)] = 1;	
-		toggle_move();
-
+	if (document.getElementById(square).innerHTML != "X" && document.getElementById(square).innerHTML != "O"){
+		if (whose_move() == 1 ) {
+			document.getElementById(square).innerHTML = "X";
+			this.board_state[this.table_ids.indexOf(square)] = 1;	
+			toggle_move();
+		}
+		else {
+			document.getElementById(square).innerHTML = "O";
+			this.board_state[this.table_ids.indexOf(square)] = 0;
+			toggle_move();
+		}
+		check_winner();
 	}
 	else {
-		document.getElementById(square).innerHTML = "O";
-		this.board_state[this.table_ids.indexOf(square)] = 0;
-		toggle_move();
+		alert("invalid move");
 	}
-	check_winner();
 } 
 
 function check_winner() {
@@ -86,6 +90,10 @@ function check_winner() {
 		alert("X"+" wins");
 		shift_play();
 	}
+	if(this.board_state[0] === 1 && this.board_state[4] === 1 && this.board_state[8] === 1){
+		alert("X"+" wins");
+		shift_play();
+	}
 
    if(this.board_state[0] === 0 && this.board_state[1] === 0 && this.board_state[2] === 0){
 		alert("O"+" wins");
@@ -119,8 +127,60 @@ function check_winner() {
 		alert("O"+" wins");
 		shift_play();
 	}     
+	if(this.board_state[0] === 0 && this.board_state[4] === 0 && this.board_state[8] === 0){
+		alert("O"+" wins");
+		shift_play();
+	}
+
+	if (board_state.includes(-1) == false) {
+		alert("Draw");
+		shift_play_up();
+
+	}
 }
 
-function shift_play() {
-
+function shift_play_up() {
+	var keep = [board_state[6], board_state[7], board_state[8]]; 
+	for (let i=0; i<9; i++){
+		board_state[i] = -1;
+		console.log(board_state[i]);
+		document.getElementById(table_ids[i]).innerHTML = '   '
+	}
+	for (let i=0; i<3; i++) {
+		if (keep[i] == 1) {
+			document.getElementById(table_ids[i]).innerHTML = 'X' 
+			board_state[i] = 1;
+			
+		}
+		if (keep[i] == 0) {
+			document.getElementById(table_ids[i]).innerHTML = 'O' 
+			board_state[i] = 1;
+		}
+	}
 }
+
+function shift_play_down() {
+	var keep = [board_state[0], board_state[1], board_state[2]]; 
+	for (let i=0; i<9; i++){
+		board_state[i] = -1;
+		console.log(board_state[i]);
+		document.getElementById(table_ids[i]).innerHTML = '   '
+	}
+	for (let i=0; i<3; i++) {
+		if (keep[i] == 1) {
+			document.getElementById(table_ids[i+6]).innerHTML = 'X' 
+			board_state[i] = 1;
+			
+		}
+		if (keep[i] == 0) {
+			document.getElementById(table_ids[i+6]).innerHTML = 'O' 
+			board_state[i] = 1;
+		}
+	}
+}
+/*
+todo
+	-replicate shift up for other directions
+	-create a function that randomly chooses a previously unchosen direction then calls that shift_play 
+	-add score tracking function 
+*/
