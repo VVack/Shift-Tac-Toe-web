@@ -63,112 +63,113 @@ function check_winner() {
 		alert("X"+" wins");
 		x_score +=1 ;
 		document.getElementById('x_score').innerHTML = x_score;
-		shift_play_();
+		shift_play_left();
 	}
 	if(this.board_state[0] === 1 && this.board_state[3] === 1 && this.board_state[6] === 1){
 		alert("X"+" wins");
 		x_score +=1 ;
 		document.getElementById('x_score').innerHTML = x_score;
-		shift_play();
+		shift_play_up();
 	}
 	if(this.board_state[1]=== 1 && this.board_state[4] === 1 && this.board_state[7] === 1) {
 		alert("X"+" wins");
 		x_score +=1 ;
 		document.getElementById('x_score').innerHTML = x_score;
-		shift_play();
+		shift_play_right();
 
 	}
 	if(this.board_state[2] === 1 && this.board_state[5] === 1 && this.board_state[8] === 1){
 		alert("X"+" wins");
 		x_score +=1 ;
 		document.getElementById('x_score').innerHTML = x_score;
-		shift_play();
+		shift_play_down();
 
 	}
 	if(this.board_state[3] === 1 && this.board_state[4]=== 1 && this.board_state[5] === 1){
 		alert("X"+" wins");
 		x_score +=1 ;
 		document.getElementById('x_score').innerHTML = x_score;
-		shift_play();
+		shift_play_right();
 
 	}
 	if (this.board_state[6]=== 1 && this.board_state[7] === 1 && this.board_state[8] === 1) {
 		alert("X"+" wins");
 		x_score +=1 ;
 		document.getElementById('x_score').innerHTML = x_score;
-		shift_play();
+		shift_play_left();
 	}
 	if(this.board_state[2] === 1 && this.board_state[4] === 1 && this.board_state[6] === 1){
 		alert("X"+" wins");
 		x_score +=1 ;
 		document.getElementById('x_score').innerHTML = x_score;
-		shift_play();
+		shift_play_up();
 	}
 	if(this.board_state[0] === 1 && this.board_state[4] === 1 && this.board_state[8] === 1){
 		alert("X"+" wins");
 		x_score +=1 ;
 		document.getElementById('x_score').innerHTML = x_score;
-		shift_play();
+		shift_play_down();
 	}
 
    if(this.board_state[0] === 0 && this.board_state[1] === 0 && this.board_state[2] === 0){
 		alert("O"+" wins");
 		o_score +=1 ;
 		document.getElementById('o_score').innerHTML = o_score;
-		shift_play();
+		shift_play_left();
 	}
 	if(this.board_state[0] === 0 && this.board_state[3] === 0 && this.board_state[6] === 0){
 		alert("O"+" wins");
 		o_score +=1 ;
 		document.getElementById('o_score').innerHTML = o_score;
-		shift_play();
+		shift_play_down();
 	}
 	if(this.board_state[1]=== 0 && this.board_state[4] === 0 && this.board_state[7] === 0){
 		alert("O"+" wins");
 		o_score +=1 ;
 		document.getElementById('o_score').innerHTML = o_score;
-		shift_play();
+		shift_play_up();
 
 	}
 	if(this.board_state[2] === 0 && this.board_state[5] === 0 && this.board_state[8] === 0){
 		alert("O"+" wins");
 		o_score +=1 ;
 		document.getElementById('o_score').innerHTML = o_score;
-		shift_play();
+		shift_play_down();
 
 	}
 	if(this.board_state[3] === 0 && this.board_state[4]=== 0 && this.board_state[5] === 0){
 		alert("O"+" wins");
 		o_score +=1 ;
 		document.getElementById('o_score').innerHTML = o_score;
-		shift_play();
+		shift_play_left();
 
 	}
 	if (this.board_state[6]=== 0 && this.board_state[7] === 0 && this.board_state[8] === 0) {
 		alert("O"+" wins");
 		o_score +=1 ;
 		document.getElementById('o_score').innerHTML = o_score;
-		shift_play();
+		shift_play_right();
 	}
 	if(this.board_state[2] === 0 && this.board_state[4] === 0 && this.board_state[6] === 0){
 		alert("O"+" wins");
 		o_score +=1 ;
 		document.getElementById('o_score').innerHTML = o_score;
-		shift_play();
+		shift_play_left();
 	}     
 	if(this.board_state[0] === 0 && this.board_state[4] === 0 && this.board_state[8] === 0){
 		alert("O"+" wins");
 		o_score +=1 ;
 		document.getElementById('o_score').innerHTML = o_score;
-		shift_play();
+		shift_play_right();
 	}
 
 	if (board_state.includes(-1) == false) {
 		alert("Draw");
-		shift_play_();
+		shift_play_left();
 
 	}
 }
+/*
 var last_dir = 0; // 0 = up, 1 = right, 2 = down and 3 = left
 function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
@@ -194,8 +195,9 @@ function shift_play () { //chooses and calls a directional shift function that w
 		shift_play_left();
 	}
 }
-
+*/
 function shift_play_up() {
+	console.log("up");
 	var keep = [board_state[6], board_state[7], board_state[8]]; 
 	for (let i=0; i<9; i++){
 		board_state[i] = -1;
@@ -217,6 +219,7 @@ function shift_play_up() {
 }
 
 function shift_play_down() {
+	console.log("down");
 	var keep = [board_state[0], board_state[1], board_state[2]]; 
 	for (let i=0; i<9; i++){
 		board_state[i] = -1;
@@ -237,6 +240,7 @@ function shift_play_down() {
 }
 
 function shift_play_left() {
+	console.log("left");
 	var keep = [board_state[2], board_state[5], board_state[8]]; 
 	for (let i=0; i<9; i++){
 		board_state[i] = -1;
@@ -257,6 +261,7 @@ function shift_play_left() {
 	}
 }
 function shift_play_right() {
+	console.log("right")
 	var keep = [board_state[0], board_state[3], board_state[6]]; 
 	for (let i=0; i<9; i++){
 		board_state[i] = -1;
