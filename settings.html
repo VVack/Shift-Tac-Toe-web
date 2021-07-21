@@ -11,12 +11,22 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="./rule2.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#dropdown").change(function() {
+            var color = $("#dropdown").val();
+            //  alert(color);
+            $("body").css("background-color", color); 
+        });
+    });
+
+</script>
 <link rel="stylesheet" href="settings.css">
 </head>
 
 
-<body>
+<body id="settings_page">
     <div>
         <a class="btn btn-primary" href="home.html">Back</a>
     </div>
@@ -30,28 +40,49 @@
             <div class="row">
                 <div class="col text-center">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Icon skin
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Skin 1</a>
-                          <a class="dropdown-item" href="#">Skin 2</a>
-                        </div>
+                        <form>
+                            <select class="form-control">
+                            <option value="#fff">Set Icon Skin
+                                <option>Skin 1
+                                <option>Skin 2
+                            </select>
+                        </form>
                     </div>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col text-center">
-                    <div class="dropdown">
+                    <!-- <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Background
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Background 1</a>
-                          <a class="dropdown-item" href="#">Background 2</a>
+                            <a class="dropdown-item" value="red" onclick=change_color()>red</a>
+                            <a class="dropdown-item" value="blue" onclick=change_color()>blue</a>
                         </div>
-                    </div>
+                    </div> -->
+                    <form name="bgcolor form">
+                        <select id="dropdown" class="form-control">
+                        <option value="#fff">Set Background color
+                            <option value="#ff0000">Dark Red
+                            <option value="#006600">Dark Green
+                            <option value="#0000ff">Dark Blue
+                            <option value="#000000">Black
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col text-center">
+                    <form>
+                        <select class="form-control">
+                        <option value="#fff">Music
+                            <option>On
+                            <option>Off
+                        </select>
+                    </form>
                 </div>
             </div>
         </div>
