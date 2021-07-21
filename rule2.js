@@ -55,87 +55,143 @@ function mark_square(square) {
 		alert("invalid move");
 	}
 } 
-
+var x_score = 0;
+var o_score = 0;
 function check_winner() {
 
 	if(this.board_state[0] === 1 && this.board_state[1] === 1 && this.board_state[2] === 1){
 		alert("X"+" wins");
-		shift_play();
+		x_score +=1 ;
+		document.getElementById('x_score').innerHTML = x_score;
+		shift_play_();
 	}
 	if(this.board_state[0] === 1 && this.board_state[3] === 1 && this.board_state[6] === 1){
 		alert("X"+" wins");
+		x_score +=1 ;
+		document.getElementById('x_score').innerHTML = x_score;
 		shift_play();
 	}
 	if(this.board_state[1]=== 1 && this.board_state[4] === 1 && this.board_state[7] === 1) {
 		alert("X"+" wins");
+		x_score +=1 ;
+		document.getElementById('x_score').innerHTML = x_score;
 		shift_play();
 
 	}
 	if(this.board_state[2] === 1 && this.board_state[5] === 1 && this.board_state[8] === 1){
 		alert("X"+" wins");
+		x_score +=1 ;
+		document.getElementById('x_score').innerHTML = x_score;
 		shift_play();
 
 	}
 	if(this.board_state[3] === 1 && this.board_state[4]=== 1 && this.board_state[5] === 1){
 		alert("X"+" wins");
+		x_score +=1 ;
+		document.getElementById('x_score').innerHTML = x_score;
 		shift_play();
 
 	}
 	if (this.board_state[6]=== 1 && this.board_state[7] === 1 && this.board_state[8] === 1) {
-
 		alert("X"+" wins");
+		x_score +=1 ;
+		document.getElementById('x_score').innerHTML = x_score;
 		shift_play();
 	}
 	if(this.board_state[2] === 1 && this.board_state[4] === 1 && this.board_state[6] === 1){
 		alert("X"+" wins");
+		x_score +=1 ;
+		document.getElementById('x_score').innerHTML = x_score;
 		shift_play();
 	}
 	if(this.board_state[0] === 1 && this.board_state[4] === 1 && this.board_state[8] === 1){
 		alert("X"+" wins");
+		x_score +=1 ;
+		document.getElementById('x_score').innerHTML = x_score;
 		shift_play();
 	}
 
    if(this.board_state[0] === 0 && this.board_state[1] === 0 && this.board_state[2] === 0){
 		alert("O"+" wins");
+		o_score +=1 ;
+		document.getElementById('o_score').innerHTML = o_score;
 		shift_play();
 	}
 	if(this.board_state[0] === 0 && this.board_state[3] === 0 && this.board_state[6] === 0){
 		alert("O"+" wins");
+		o_score +=1 ;
+		document.getElementById('o_score').innerHTML = o_score;
 		shift_play();
 	}
 	if(this.board_state[1]=== 0 && this.board_state[4] === 0 && this.board_state[7] === 0){
 		alert("O"+" wins");
+		o_score +=1 ;
+		document.getElementById('o_score').innerHTML = o_score;
 		shift_play();
 
 	}
 	if(this.board_state[2] === 0 && this.board_state[5] === 0 && this.board_state[8] === 0){
 		alert("O"+" wins");
+		o_score +=1 ;
+		document.getElementById('o_score').innerHTML = o_score;
 		shift_play();
 
 	}
 	if(this.board_state[3] === 0 && this.board_state[4]=== 0 && this.board_state[5] === 0){
 		alert("O"+" wins");
+		o_score +=1 ;
+		document.getElementById('o_score').innerHTML = o_score;
 		shift_play();
 
 	}
 	if (this.board_state[6]=== 0 && this.board_state[7] === 0 && this.board_state[8] === 0) {
-
 		alert("O"+" wins");
+		o_score +=1 ;
+		document.getElementById('o_score').innerHTML = o_score;
 		shift_play();
 	}
 	if(this.board_state[2] === 0 && this.board_state[4] === 0 && this.board_state[6] === 0){
 		alert("O"+" wins");
+		o_score +=1 ;
+		document.getElementById('o_score').innerHTML = o_score;
 		shift_play();
 	}     
 	if(this.board_state[0] === 0 && this.board_state[4] === 0 && this.board_state[8] === 0){
 		alert("O"+" wins");
+		o_score +=1 ;
+		document.getElementById('o_score').innerHTML = o_score;
 		shift_play();
 	}
 
 	if (board_state.includes(-1) == false) {
 		alert("Draw");
-		shift_play_up();
+		shift_play_();
 
+	}
+}
+var last_dir = 0; // 0 = up, 1 = right, 2 = down and 3 = left
+function getRandomInt(max) {
+	return Math.floor(Math.random() * max);
+  }
+
+function shift_play () { //chooses and calls a directional shift function that wasnt just chosen
+	var dir = getRandomInt(4);
+	if (dir == last_dir) {
+		dir = getRandomInt(4);
+	}
+	last_dir = dir;
+	alert(dir);
+	if (dir=0) {
+		shift_play_up();
+	}
+	if (dir=1) {
+		shift_play_right();
+	}
+	if (dir=2) {
+		shift_play_down();
+	}
+	if (dir=3) {
+		shift_play_left();
 	}
 }
 
@@ -143,7 +199,6 @@ function shift_play_up() {
 	var keep = [board_state[6], board_state[7], board_state[8]]; 
 	for (let i=0; i<9; i++){
 		board_state[i] = -1;
-		console.log(board_state[i]);
 		document.getElementById(table_ids[i]).innerHTML = '   '
 	}
 	for (let i=0; i<3; i++) {
@@ -154,8 +209,10 @@ function shift_play_up() {
 		}
 		if (keep[i] == 0) {
 			document.getElementById(table_ids[i]).innerHTML = 'O' 
-			board_state[i] = 1;
+			board_state[i] = 0;
 		}
+		console.log(board_state);
+
 	}
 }
 
@@ -163,7 +220,6 @@ function shift_play_down() {
 	var keep = [board_state[0], board_state[1], board_state[2]]; 
 	for (let i=0; i<9; i++){
 		board_state[i] = -1;
-		console.log(board_state[i]);
 		document.getElementById(table_ids[i]).innerHTML = '   '
 	}
 	for (let i=0; i<3; i++) {
@@ -174,10 +230,54 @@ function shift_play_down() {
 		}
 		if (keep[i] == 0) {
 			document.getElementById(table_ids[i+6]).innerHTML = 'O' 
-			board_state[i] = 1;
+			board_state[i] = 0;
 		}
+		console.log(board_state);
 	}
 }
+
+function shift_play_left() {
+	var keep = [board_state[2], board_state[5], board_state[8]]; 
+	for (let i=0; i<9; i++){
+		board_state[i] = -1;
+		document.getElementById(table_ids[i]).innerHTML = '   '
+	}
+	for (let i=0; i<3; i++) {
+		if (keep[i] == 1) {
+			document.getElementById(table_ids[i*3]).innerHTML = 'X' 
+			board_state[i] = 1;
+			
+		}
+		if (keep[i] == 0) {
+			document.getElementById(table_ids[i*3]).innerHTML = 'O' 
+			board_state[i] = 0;
+		}
+		console.log(board_state);
+
+	}
+}
+function shift_play_right() {
+	var keep = [board_state[0], board_state[3], board_state[6]]; 
+	for (let i=0; i<9; i++){
+		board_state[i] = -1;
+		document.getElementById(table_ids[i]).innerHTML = '   '
+	}
+	var j = 2;
+	for (let i=0; i<3; i++) {
+		if (keep[i] == 1) {
+			document.getElementById(table_ids[j]).innerHTML = 'X' 
+			board_state[i] = 1;
+			
+		}
+		if (keep[i] == 0) {
+			document.getElementById(table_ids[j]).innerHTML = 'O' 
+			board_state[i] = 0;
+		}
+		j += 3;
+		console.log(board_state);
+	}
+}
+
 /*
 todo
 	-replicate shift up for other directions
