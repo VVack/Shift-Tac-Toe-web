@@ -1,0 +1,13 @@
+#container0 {
+    position: absolute;
+    top: 15%;
+    bottom: 25%;
+    left: 0;
+    right: 0;
+    width: 400px;
+    /* margin-right: auto;
+    margin-left: auto; */
+    height: 400px;
+    border-color: black;
+    border-style: solid;
+}

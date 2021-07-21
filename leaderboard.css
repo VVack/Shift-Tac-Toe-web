@@ -1,0 +1,11 @@
+#container0 {
+    width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 75px;
+    background:rgb(104, 209, 195);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 50px Arial, sans-serif;
+}
